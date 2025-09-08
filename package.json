@@ -1,0 +1,48 @@
+{
+  "name": "pystring.wasm",
+  "version": "1.1.4",
+  "type": "module",
+  "description": "Python-like string manipulation functions compiled to WebAssembly",
+  "main": "dist/node/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/node/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./browser": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "npm run build:wasm",
+    "build:wasm": "mkdir -p build && cd build && em++ -O3 -s WASM=1 -s MODULARIZE=1 -s EXPORT_ES6=1 -s EXPORTED_FUNCTIONS='[\"_pystring_capitalize\",\"_pystring_center\",\"_pystring_count\",\"_pystring_endswith\",\"_pystring_find\",\"_pystring_index\",\"_pystring_isalnum\",\"_pystring_isalpha\",\"_pystring_isdigit\",\"_pystring_islower\",\"_pystring_isspace\",\"_pystring_isupper\",\"_pystring_join\",\"_pystring_ljust\",\"_pystring_lower\",\"_pystring_lstrip\",\"_pystring_replace\",\"_pystring_rfind\",\"_pystring_rjust\",\"_pystring_rstrip\",\"_pystring_split\",\"_pystring_startswith\",\"_pystring_strip\",\"_pystring_swapcase\",\"_pystring_title\",\"_pystring_upper\",\"_pystring_zfill\",\"_malloc\",\"_free\"]' -s EXPORTED_RUNTIME_METHODS='[\"ccall\",\"cwrap\",\"HEAPU8\",\"UTF8ToString\",\"stringToUTF8\"]' -s INITIAL_MEMORY=16MB -s MAXIMUM_MEMORY=256MB -s ALLOW_MEMORY_GROWTH=1 -s STACK_SIZE=2MB -s ASSERTIONS=0 --closure 1 -flto ../src/wasm_module.cpp ../pystring.cpp -o pystring.js",
+    "test": "echo 'Tests would run here'",
+    "dev": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "string",
+    "manipulation", 
+    "python",
+    "pystring",
+    "text",
+    "processing",
+    "wasm",
+    "webassembly",
+    "utilities"
+  ],
+  "author": "Superstruct WASM Contributors",
+  "license": "BSD-3-Clause",
+  "files": [
+    "build/",
+    "dist/",
+    "src/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superstruct/pystring.wasm.git"
+  },
+  "homepage": "https://github.com/superstruct/pystring.wasm"
+}

@@ -1,5 +1,49 @@
+# Build outputs  
+build/*.js
+build/*.wasm
+build/*.map
+*.wasm
+*.js.mem
+
+# Generated distribution variants (keep source dist files)
+dist/browser-es6/
+dist/browser-fallback/
+
+# Autotools
 test
 .libs
 libpystring.la
 pystring.lo
 pystring.o
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Platform-specific
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+tmp/
+.tmp/
+temp/
+.temp/
+build-*
+
+# Testing
+coverage/
+.nyc_output/
+test-results/
